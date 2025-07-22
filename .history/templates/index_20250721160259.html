@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Ürün Sorgulama</title>
+</head>
+<body>
+    <h1>Ürün Bilgisi Sorgula</h1>
+    <form method="POST">
+        <label for="urun_numarasi">Ürün Numarası:</label>
+        <input type="text" name="urun_numarasi" id="urun_numarasi" required />
+        <button type="submit">Sorgula</button>
+    </form>
+
+    {% if urun_bilgisi %}
+        <h2>Ürün Detayları:</h2>
+        <p>Ürün Sahibi Adı: {{ urun_bilgisi.urun_Adi }}</p>
+        <p>Ürün Numarası: {{ urun_bilgisi.urun_numarasi }}</p>
+        <p>Kalan Garanti Süresi: {{ kalan_sure }}</p>
+    {% elif urun_bilgisi is not none %}
+        <p>Ürün bulunamadı.</p>
+    {% endif %}
+</body>
+</html>

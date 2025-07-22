@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>THOR</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1c1c1c;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            background-color: #000;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            color: hsl(29, 100%, 50%);
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+            width: 100%;
+        }
+
+        button {
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            background-color: rgb(255, 115, 0);
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ffb347;
+        }
+
+        .result {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .result p {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        @media (max-width: 600px) {
+            .title {
+                font-size: 36px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .result p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">THOR</div>
+
+        <form method="POST">
+            <input type="text" name="urun_numarasi" placeholder="Ürün Numarası" required>
+            <button type="submit">Sorgula</button>
+        </form>
+
+        {% if urun_bilgisi %}
+            <div class="result">
+                <p><strong>Ürün Sahibi Adı:</strong> {{ urun_bilgisi.urun_Adi }}</p>
+                <p><strong>Ürün Numarası:</strong> {{ urun_bilgisi.urun_numarasi }}</p>
+                <p><strong>Kalan Garanti Süresi:</strong> {{ kalan_sure }}</p>
+            </div>
+        {% elif kalan_sure %}
+            <div class="result">
+                <p>{{ kalan_sure }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

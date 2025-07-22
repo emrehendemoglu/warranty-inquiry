@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>THOR</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .title-panel {
+            background-color: black;
+            padding: 20px 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .title-panel h1 {
+            font-size: 48px;
+            color: orange;
+            margin: 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            width: 300px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: orange;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .result p {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="title-panel">
+        <h1>THOR</h1>
+    </div>
+
+    <form method="POST">
+        <input type="text" name="urun_numarasi" placeholder="Ürün Numarası" required>
+        <button type="submit">Sorgula</button>
+    </form>
+
+    {% if urun_bilgisi %}
+        <div class="result">
+            <p><strong>Ürün Sahibi Adı:</strong> {{ urun_bilgisi.urun_Adi }}</p>
+            <p><strong>Ürün Numarası:</strong> {{ urun_bilgisi.urun_numarasi }}</p>
+            <p><strong>Kalan Garanti Süresi:</strong> {{ kalan_sure }}</p>
+        </div>
+    {% elif kalan_sure %}
+        <div class="result">
+            <p>{{ kalan_sure }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>

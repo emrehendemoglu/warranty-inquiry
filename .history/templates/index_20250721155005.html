@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Thor Şirketi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 100px;
+        }
+        h1 {
+            font-size: 72px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            font-size: 24px;
+            padding: 10px;
+            width: 300px;
+        }
+        input[type="submit"] {
+            font-size: 24px;
+            padding: 10px 20px;
+            margin-left: 10px;
+        }
+        .result {
+            margin-top: 40px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>THOR</h1>
+    <form method="post">
+        <label for="urun_numarasi">Ürün Numarası:</label><br />
+        <input type="text" id="urun_numarasi" name="urun_numarasi" required />
+        <input type="submit" value="Sorgula" />
+    </form>
+    <div class="result">
+        {% if urun_bilgisi %}
+            Ürün Adı: {{ urun_bilgisi }}<br />
+        {% endif %}
+        {% if kalan_sure %}
+            Kalan Garanti Süresi: {{ kalan_sure }}
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thor Ürün Sorgulama</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        h1 {
+            font-size: 48px;
+            color: #333;
+        }
+        form {
+            margin-top: 30px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 18px;
+            width: 300px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .sonuc {
+            margin-top: 30px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>THOR</h1>
+    <form method="POST">
+        <label>Ürün Numarası:</label><br>
+        <input type="text" name="urun_numarasi" required><br>
+        <input type="submit" value="Sorgula">
+    </form>
+
+    {% if urun_bilgisi %}
+    <div class="sonuc">
+        <p><strong>Ürün Adı:</strong> {{ urun_bilgisi.urun_adi }}</p>
+        <p><strong>Ürün Numarası:</strong> {{ urun_bilgisi.urun_numarasi }}</p>
+        <p><strong>Kalan Garanti Süresi:</strong> {{ kalan_sure }}</p>
+    </div>
+    {% elif kalan_sure %}
+    <div class="sonuc">
+        <p>{{ kalan_sure }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
